@@ -1,5 +1,3 @@
-
-
 melysegek=[]
 with open("melyseg.txt","r",encoding="utf-8") as fin:
     fin.readline()
@@ -92,7 +90,7 @@ def legmelyebb_pontok_koordinatai(m, max_ertek):
         for oszlop_index,elem in enumerate(sor):
             if elem==max_ertek:
                 print(f"{sor_index+1}; {oszlop_index}", end=" ")
-
+    print()
 
 legmelyebb_pontok_koordinatai(melysegek, melysegek[max_s][max_o])
 
@@ -106,3 +104,21 @@ vonal hossza? A partvonalhoz vegye hozzá a tóban lévő szigetek kerületét i
 az eredményt a mintának megfelelően a képernyőre! (A megoldás során felhasználhatja,
 hogy a táblázat első és utolsó sorában és oszlopában minden adat 0.) 
 """
+
+print("5. Feladat")
+def partvonal_hossza(m):
+    hossz=0
+    for i in range(1, len(m)-1):
+        for j in range(1, len(m[i])-1):
+            if m[i][j]>0:
+                if m[i-1][j]==0:
+                    hossz+=1
+                if m[i+1][j]==0:
+                    hossz+=1
+                if m[i][j-1]==0:
+                    hossz+=1
+                if m[i][j+1]==0:
+                    hossz+=1
+    return hossz
+
+print(f"A tó partvonala {partvonal_hossza(melysegek)} m hosszú")
